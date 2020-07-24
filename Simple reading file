@@ -1,0 +1,6 @@
+f = open('acme_worksheet.csv', 'r')
+lines = f.read()
+k = open('text.csv', 'w')
+k.write(lines)
+f.close()
+k.close()
