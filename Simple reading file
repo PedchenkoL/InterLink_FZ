@@ -1,6 +1,10 @@
-f = open('acme_worksheet.csv', 'r')
-lines = f.read()
-k = open('text.csv', 'w')
-k.write(lines)
-f.close()
-k.close()
+import csv
+
+with open('acme_worksheet.csv', 'r') as csv_file:
+	csv_reader = csv.DictReader(csv_file)
+	with open('New.csv', 'w') as new_file:
+		fieldnames = ['Employee Name', 'Date', 'Work Hours']
+		csv_writer = csv.DictWriter(new_file, fieldnames = fieldnames, delimiter = '\t')
+		csv_writer.writeheader()
+		for line in csv_reader:
+			csv_writer.writerow(line)
